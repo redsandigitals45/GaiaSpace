@@ -1,0 +1,397 @@
+@import "tailwindcss";
+
+/* @plugin "tailwindcss-animate"; */
+/* @import "tw-animate-css"; */
+
+/* @custom-variant dark (&:is(.dark *)); */
+
+@theme {
+  --color-primary: #0080c8;
+  --color-secondary: #e0e0e0;
+  --color-background: #000407;
+  --color-highlight: #202020;
+  --color-dark: #090c0e;
+
+  --font-space: "Space Grotesk";
+
+  --text-h1: 60px;
+  --text-h2: 48px;
+  --text-h3: 36px;
+  --text-h4: 30px;
+  --text-h5: 24px;
+  --text-h6: 20px;
+  --text-p: 16px;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+:root {
+  --loader-text-color: #f6e9fe;
+  --loader-dot-color: #a51ff6;
+  --loader-bg: #100319;
+  --radius: 0.625rem;
+  --background: #000407;
+  --foreground: #fff;
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #0080c8;
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: #e0e0e0;
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+html,
+body,
+#root {
+  max-width: 100%;
+  height: 100%;
+  outline: hidden;
+  background-color: #000407;
+  transition-property: opacity, transform, filter;
+  transition-timing-function: ease-in-out;
+  transition-duration: 500ms;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* ------------------------------CSS for page-transition---------------------------------- */
+.page-transition {
+  opacity: 0;
+  background: #000407;
+  transform: translatey(-80px);
+  filter: blur(12px);
+}
+/* ------------------------------CSS for page-transition---------------------------------- */
+/* ------------------------------CSS for loader---------------------------------- */
+.loader-container {
+  position: fixed;
+  inset: 0;
+  background-color: #000407;
+  display: grid;
+  place-content: center;
+  transition:
+    opacity 0.4s ease-in-out,
+    visibility 0.4s ease-in-out;
+}
+svg {
+  width: 90vw;
+  font-weight: 700;
+}
+
+svg text {
+  stroke-width: 2;
+}
+
+svg text.text-body {
+  stroke: var(--loader-text-color);
+  animation: 4s infinite alternate animate-stroke;
+}
+
+svg text.dot {
+  fill: var(--loader-dot-color);
+  stroke: var(--loader-dot-color);
+  animation: 4s infinite alternate animate-dot;
+}
+
+@keyframes animate-stroke {
+  0% {
+    fill: transparent;
+    stroke: var(--loader-text-color);
+    stroke-width: 3;
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 32%;
+  }
+  50% {
+    fill: transparent;
+    stroke: var(--loader-text-color);
+    stroke-width: 3;
+  }
+  80%,
+  100% {
+    fill: var(--loader-text-color);
+    stroke: transparent;
+    stroke-width: 0;
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 32% 0;
+  }
+}
+
+@keyframes animate-dot {
+  0%,
+  60% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* ------------------------------CSS for loader---------------------------------- */
+/* ------------------------------CSS for navbar---------------------------------- */
+.navbar {
+  min-width: 650px;
+
+  /* Underline Animation */
+  .underlineAnimationLinks {
+    display: block;
+    position: relative;
+    padding: 0 0;
+    overflow: hidden;
+  }
+
+  .underlineAnimationLinks::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    background-color: hotpink;
+    opacity: 1;
+    transform: translate3d(-100%, 0, 0);
+    transition:
+      opacity 300ms,
+      transform 300ms;
+  }
+
+  .underlineAnimationLinks:hover::after,
+  .underlineAnimationLinks:focus::after {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Side bar */
+#menu-button span {
+  width: 25px;
+  height: 2.5px;
+  background-color: #000407;
+  border-radius: 2px;
+  transition:
+    transform 0.3s ease-in-out,
+    opacity 0.3s ease-in-out,
+    background-color 0.5s ease-in-out;
+}
+
+:root[menu-open] #menu-button span:nth-child(1) {
+  transform: translate3d(0, 6px, 0) rotate(45deg);
+}
+
+:root[menu-open] #menu-button span:nth-child(2) {
+  transform: scale(0);
+  opacity: 0;
+}
+
+:root[menu-open] #menu-button span:nth-child(3) {
+  transform: translate3d(0, -6px, 0) rotate(-45deg);
+}
+
+:root[menu-open] #menu-button span {
+  background-color: white;
+}
+/* ------------------------------CSS for navbar---------------------------------- */
+.filter {
+  filter: invert(65%) sepia(45%) saturate(421%) hue-rotate(213deg)
+    brightness(107%) contrast(104%);
+}
+
+.ellipticalBackground {
+  background:
+    radial-gradient(
+        circle at 100% 100%,
+        #101010 0,
+        #101010 19px,
+        transparent 19px
+      )
+      0% 0%/20px 20px no-repeat,
+    radial-gradient(circle at 0 100%, #101010 0, #101010 19px, transparent 19px)
+      100% 0%/20px 20px no-repeat,
+    radial-gradient(circle at 100% 0, #101010 0, #101010 19px, transparent 19px)
+      0% 100%/20px 20px no-repeat,
+    radial-gradient(circle at 0 0, #101010 0, #101010 19px, transparent 19px)
+      100% 100%/20px 20px no-repeat,
+    linear-gradient(#101010, #101010) 50% 50% / calc(100% - 2px)
+      calc(100% - 40px) no-repeat,
+    linear-gradient(#101010, #101010) 50% 50% / calc(100% - 40px)
+      calc(100% - 2px) no-repeat,
+    radial-gradient(
+      #000000 70%,
+      rgb(202, 202, 202) 97%,
+      rgb(202, 202, 202) 100%
+    );
+  border-radius: 20px;
+}
+
+.contactBackground {
+  background: #4b6374;
+  background: linear-gradient(
+    45deg,
+    rgba(75, 99, 116, 1) -70%,
+    rgba(9, 12, 14, 1) 50%,
+    rgba(75, 99, 116, 1) 170%
+  );
+}
+
+.TestimonialCard {
+  background: linear-gradient(
+    45deg,
+    rgba(33, 31, 31, 1) 0%,
+    rgba(5, 5, 6, 1) 50%,
+    rgba(33, 31, 31, 1) 100%
+  );
+}
+/* ------------------------------CSS for navbar---------------------------------- */
+.cta_btn {
+  margin-top: 1rem;
+  font-size: 1.35rem !important;
+  padding: 0.75rem 1.5rem;
+  /* background-color: #151517; */
+  background-color: #0e0e0c;
+  color: white;
+  border: none;
+  border-radius: 11px;
+  box-shadow:
+    inset 0 4px 2px -1px rgba(255, 255, 255, 0.2),
+    inset 0 -3px 1px #000407;
+  outline: 1.5px solid rgba(0, 0, 0, 0.2);
+}
+
+/* Aboutttttttttttt */
+
+.grad {
+  background: radial-gradient(ellipse at 50% 0%, #202020 0%, #000407 40%);
+
+  @media (max-width: 768px) {
+    background: radial-gradient(ellipse at 50% 0%, #151515 0%, #000407 100%);
+  }
+}
+
+@keyframes circle {
+  0% {
+    transform: rotate(0deg) translate(-250px);
+  }
+  100% {
+    transform: rotate(200deg) translate(-250px);
+  }
+}
+
+@keyframes circle-mobile {
+  0% {
+    transform: rotate(0deg) translate(-120px);
+  }
+  100% {
+    transform: rotate(200deg) translate(-120px);
+  }
+}
+
+.circle {
+  animation: circle 4s linear infinite;
+
+  @media (max-width: 1023px) {
+    animation-name: circle-mobile;
+  }
+}
+
+.dot {
+  animation: move 10s linear infinite;
+}
+
+@keyframes move {
+  to {
+    --angle: -180deg;
+    --spin: 180deg;
+  }
+}
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* @property --spin {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+} */
+
+.dot {
+  transform: translate(
+    calc(90vw * cos(var(--angle))),
+    calc(250px * sin(var(--angle)))
+  );
+  /* rotate(var(--spin)); */
+}
+
+/* dotMD */
+
+.dotMD {
+  animation: move 16s linear infinite;
+}
+@keyframes move {
+  to {
+    --angle: -180deg;
+    --spin: 180deg;
+  }
+}
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@property --spin {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+.dotMD {
+  transform: translate(
+    calc(55vw * cos(var(--angle))),
+    calc(350px * sin(var(--angle)))
+  );
+  /* rotate(var(--spin)); */
+}
+
+/* .canvas-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+}
+
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+} */
