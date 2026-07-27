@@ -210,11 +210,10 @@ function CustomSelect({
                   onChange(opt.value);
                   setOpen(false);
                 }}
-                className={`w-full px-3 py-2.5 text-left text-sm transition-colors hover:bg-[#252830] ${
-                  value === opt.value
+                className={`w-full px-3 py-2.5 text-left text-sm transition-colors hover:bg-[#252830] ${value === opt.value
                     ? "bg-[#1e2230] text-blue-400"
                     : "text-gray-200"
-                }`}
+                  }`}
               >
                 {opt.label}
               </button>
@@ -293,11 +292,8 @@ export default function ContactForm() {
       });
 
       if (!res.ok) {
-        //const data = await res.json().catch(() => ({}));
-        //throw new Error(data?.error || "Failed to send message");
-        toast.error("Couldn’t send message", {
-          description: "Please try again.",
-        });
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error || "Failed to send message");
       }
 
       toast.success("Message sent", {
