@@ -28,13 +28,14 @@ type DesignationValue =
   | "other";
 
 type PositionValue =
-  | "⁠Electric Propulsion"
-  | "⁠Liquid Propulsion"
-  | "⁠Satellite Structures "
-  | "⁠Orbital Mechanics and Control "
-  | "⁠Satellite Communication "
-  | "⁠Founder Office / General"
-  | "other";
+  | "Electric Propulsion"
+  | "Liquid Propulsion"
+  | "Satellite Structures"
+  | "Orbital Mechanics and Control"
+  | "Satellite Communication"
+  | "Founder Office / General"
+  | "Other"
+  | "";
 
 interface ApplicantInfo {
   firstName: string;
@@ -238,11 +239,10 @@ function CustomSelect({
                   onChange(opt.value);
                   setOpen(false);
                 }}
-                className={`w-full px-3 py-2.5 text-left text-sm transition-colors hover:bg-[#252830] ${
-                  value === opt.value
-                    ? "bg-[#1e2230] text-blue-400"
-                    : "text-gray-200"
-                }`}
+                className={`w-full px-3 py-2.5 text-left text-sm transition-colors hover:bg-[#252830] ${value === opt.value
+                  ? "bg-[#1e2230] text-blue-400"
+                  : "text-gray-200"
+                  }`}
               >
                 {opt.label}
               </button>
@@ -264,13 +264,13 @@ const DESIGNATION_OPTIONS: SelectOption[] = [
 ];
 
 const POSITION_OPTIONS: SelectOption[] = [
-  { value: "electric propulsion", label: "⁠Electric Propulsion" },
-  { value: "backend", label: "⁠Liquid Propulsion" },
-  { value: "fullstack", label: "⁠Satellite Structures" },
-  { value: "design", label: "Orbital Mechanics and Control" },
-  { value: "product", label: "Satellite Communication" },
-  { value: "data", label: "⁠Founder Office / General" },
-  { value: "other", label: "Other" },
+  { value: "Electric Propulsion", label: "Electric Propulsion" },
+  { value: "Liquid Propulsion", label: "Liquid Propulsion" },
+  { value: "Satellite Structures", label: "Satellite Structures" },
+  { value: "Orbital Mechanics and Control", label: "Orbital Mechanics and Control" },
+  { value: "Satellite Communication", label: "Satellite Communication" },
+  { value: "Founder Office / General", label: "Founder Office / General" },
+  { value: "Other", label: "Other" },
 ];
 
 const INITIAL_APPLICANT: ApplicantInfo = {
