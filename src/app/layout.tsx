@@ -15,6 +15,13 @@ export const metadata: Metadata = {
   title: "Gaia Space",
   description:
     "We're pioneering a new frontier in satellite technology, flying lower and smarter to deliver ultra-high-definition imagery, seamless global communications.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/icon/GIcon.png", type: "image/png" },
+    ],
+    apple: "/icon/GIcon.png",
+  },
 };
 
 export default function RootLayout({
