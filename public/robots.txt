@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow internal API routes
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://gaiaspace.co.in/sitemap.xml
