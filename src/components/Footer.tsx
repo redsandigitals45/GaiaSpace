@@ -31,7 +31,7 @@ export default function Footer() {
           <div className="flex w-full justify-evenly gap-5 md:w-1/2 md:justify-start">
             <Link href="/about">About Us</Link>
             <Link href="/careers">Careers</Link>
-            <Link href="/mission">Mission</Link>
+            <Link href="/missions">Missions</Link>
             <Link href="/training_program">Training Program</Link>
           </div>
           <div className="mt-4 flex w-full justify-center gap-2 md:mt-0 md:w-1/2 md:justify-end">

@@ -20,6 +20,16 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  async redirects() {
+    return [
+      {
+        source: "/mission",
+        destination: "/missions",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
